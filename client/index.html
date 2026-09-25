@@ -9,32 +9,40 @@
 </head>
 
 <body>
+  <div class="contenidorPrincipal">
+    <header>
+      <h1 id="titolPrincipal">El Cartero Invisible</h1>
+    </header>
 
-  <header>
-    <h1 id="titolPrincipal">El Cartero Invisible</h1>
-  </header>
+    <div id="contenidorCartes">
+      <div class="carta">
+        <h3>De: Iker</h3>
+        <p>Hola que tal? Soy tu yo del pasado, vengo a atormentarte.</p>
+      </div>
+      <div id="contenidorInner"></div>
+    </div>
 
-  <div id="contenidorCartes">
-    <!-- buit per a futures cartes -->
+
+    <p class="info">Bienvenido a tu buzón virtual</p>
+
+    <main>
+      <section id="llistatCartes">
+        <!-- de moment buit: aquí aniran les cartes -->
+      </section>
+      <section id="formulariCarta">
+        <!-- de moment buit: aquí anirà el formulari -->
+      </section>
+    </main>
+
+    <button id="btnSaluda">Saluda'm!</button>
+    <script src="scripts.js" defer></script>
   </div>
 
-  <p class="info">Benvingut al teu buzón virtual</p>
-
-  <main>
-    <section id="llistatCartes">
-      <!-- de moment buit: aquí aniran les cartes -->
-    </section>
-    <section id="formulariCarta">
-      <!-- de moment buit: aquí anirà el formulari -->
-    </section>
-  </main>
-
-  <button id="btnSaluda">Saluda'm!</button>
-  <script src="scripts.js" defer></script>
-  
-  <footer>
-    <p>&copy; 2026 El Cartero Invisible</p>
-  </footer>
+  <div class="footerSection">
+    <footer>
+      <p>&copy; 2026 El Cartero Invisible</p>
+    </footer>
+  </div>
 </body>
 
 </html>

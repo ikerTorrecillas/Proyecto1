@@ -1,8 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #f4f1ea;
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 20px;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url('https://wallpapercave.com/wp/wp5603662.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  /* Controlas qué tan transparente se ve la imagen (de 0.0 a 1.0) */
+  opacity: 0.30; 
+  
+  z-index: -1; /* Asegura que quede DETRÁS del contenido */
+}
+
+#titolPrincipal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -16,4 +43,50 @@ section {
 }
 
 h1:hover { color: #e74c3c; }              /* canvia de color en passar-hi el ratolí */
-section:first-child { border-left: 4px solid #2c3e50; }
+/* section:first-child { border-left: 4px solid #2c3e50; } */
+
+.carta {
+  background: linear-gradient(135deg, #b4bbc7 0%, #cbd5e1 50%, #ffffff 100%);
+  border: 1px solid #ccc;
+  padding: 2rem;
+  margin: 1em;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 60%;
+}
+
+#contenidorCartes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#btnSaluda {
+  margin-left: 46.5%;
+}
+
+.footerSection {
+  display: flex;
+  background: linear-gradient(135deg, #e0f2fe 0%, #a9bcc4 100%);
+  justify-content: center;
+  align-items: center;
+  margin: 5px 10% 0px 10%;
+  padding: 1.25rem 2rem;
+  border-radius: 12px;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footerSection p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.info {
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
