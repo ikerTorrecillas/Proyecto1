@@ -60,6 +60,12 @@ h1:hover { color: #e74c3c; }              /* canvia de color en passar-hi el rat
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    /*
+    float: left;
+    width: 45%;
+    margin: 2.5%;
+    */
 }
 
 button {
@@ -100,4 +106,16 @@ button {
   text-align: center;
   max-width: 100%;
   margin: 0 auto;
+}
+
+#buzon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #a9bcc4;
+    color: white;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 100;
 }
