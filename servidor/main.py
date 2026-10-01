@@ -4,7 +4,9 @@ from pydantic import BaseModel
 app = FastAPI()
 
 #lista global
-cartes = []
+cartes = [
+    {"id": 1, "remitente": "Mi amego", "contenido": "Hola, que tal"}
+]
 
 
 @app.get("/")
@@ -45,7 +47,7 @@ class Carta(BaseModel):
 #GET le pregunta al servidor por información, POST crea o envía nuevos datos
 @app.post("/cartas")
 def crear_carta(carta: Carta):
-    nova_carta = carta.dict()          # converteix el model a diccionari
+    nova_carta = carta.model_dump()          # converteix el model a diccionari
     nova_carta["id"] = len(cartes) + 1  # assigna un ID únic
     cartes.append(nova_carta)
     return nova_carta
