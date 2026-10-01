@@ -23,7 +23,7 @@ const cartesSimulades = [
     { id: 3, remitent: "Laia", contingut: "Recorda que el temps és relatiu." }
 ];
 
-function renderitzarCartes(cartes) {
+export function renderitzarCartes(cartes) {
     const contenidor = document.querySelector("#contenidorCartes");
     contenidor.innerHTML = "";   // 1. Buidem el taulell
 

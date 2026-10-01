@@ -60,8 +60,9 @@ h1:hover { color: #e74c3c; }              /* canvia de color en passar-hi el rat
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     /*
+    position: absolute;
     float: left;
     width: 45%;
     margin: 2.5%;
@@ -118,4 +119,8 @@ button {
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     z-index: 100;
+}
+
+.contenidorPrincipal {
+  /*position: relative;*/
 }
