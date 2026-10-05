@@ -1,5 +1,5 @@
 function saluda() {
-  alert("Hola, món!");
+  alert("Hola, mister");
 }
 
 function inicializar() {
