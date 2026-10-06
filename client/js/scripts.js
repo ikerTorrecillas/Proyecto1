@@ -1,3 +1,7 @@
+let nom = "Pepe";
+let edat = 30;
+
+
 function saluda() {
   alert("Hola, mister");
 }
@@ -34,7 +38,7 @@ function inicializar() {
   });
 };
 
-export function renderitzarCartes(cartes) {
+function renderitzarCartes(cartes) {
   const contenidor = document.querySelector("#contenidorCartes");
   contenidor.innerHTML = "";   // 1. Buidem el taulell
 
@@ -61,12 +65,13 @@ export function renderitzarCartes(cartes) {
     // 4. Pengem la carta al taulell
     contenidor.appendChild(divCarta);
   });
-  // Crida-la en carregar la pàgina
-  document.addEventListener("DOMContentLoaded", () => {
-    renderitzarCartes(cartesSimulades);
-  });
-};
+}
+// Crida-la en carregar la pàgina
+document.addEventListener("DOMContentLoaded", () => {
+  renderitzarCartes(cartesSimulades);
+});
 
 if (typeof document !== 'undefined') {
-    document.addEventListener("DOMContentLoaded", inicializar);
-};
+  document.addEventListener("DOMContentLoaded", inicializar);
+}
+export { renderitzarCartes };

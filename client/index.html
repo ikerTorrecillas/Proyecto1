@@ -14,6 +14,14 @@
       <h1 id="titolPrincipal">El Cartero Invisible</h1>
     </header>
 
+    <form id="formCarta">
+      <input type="text" id="remitent" placeholder="Tu Nombre" required>
+      <input type="text" id="destinatari" placeholder="A quien va dirigida" required>
+      <textarea id="contingut" placeholder="Escribe tu carta" required></textarea>
+      <input type="text" id="personatge" placeholder="Personaje (ex: Spiterman)">
+      <button type="submit">Enviar carta</button>
+    </form>
+
     <div id="contenidorCartes">
       <div class="carta">
         <h3>De: Iker</h3>
@@ -26,7 +34,7 @@
 
     <main>
       <div id="buzon">
-          <span role="img">📮</span>
+        <span role="img">📮</span>
       </div>
       <section id="llistatCartes">
         <!-- de moment buit: aquí aniran les cartes -->
@@ -37,7 +45,7 @@
     </main>
     <button id="btnAfegir">Afegir carta de prova</button>
     <button id="btnSaluda">Saluda'm!</button>
-    <script src="js/scripts.js" defer></script>
+    <script type="module" src="js/scripts.js"></script>
   </div>
 
   <div class="footerSection">
