@@ -1,0 +1,9 @@
+[
+  {
+    "remitent": "prueba1",
+    "destinatari": "destinitari1",
+    "contingut": "cositas",
+    "personatge": "string",
+    "id": 1
+  }
+]

@@ -1,0 +1,25 @@
+[33m438f9ee[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33m438f9ee[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{1}: commit: semana 4 entornos finalizado
+[33m61b2d4c[m HEAD@{2}: commit: decoraciones css xd
+[33m3162c0a[m HEAD@{3}: commit: Funciones M6 funcionales código comentado y listo
+[33m680587b[m HEAD@{4}: commit: test semana 3 pasan web funciona
+[33mea3de63[m HEAD@{5}: commit: algunos cambios en el CSS
+[33m5a7bbc0[m HEAD@{6}: commit: test pasan semana 3
+[33m462feac[m HEAD@{7}: commit: tests m7 completados
+[33m96856ee[m HEAD@{8}: checkout: moving from 266ed266c83df5dea1aa5954fc36f5091d53dca8 to main
+[33m266ed26[m HEAD@{9}: checkout: moving from main to 266ed26
+[33m96856ee[m HEAD@{10}: checkout: moving from 266ed266c83df5dea1aa5954fc36f5091d53dca8 to main
+[33m266ed26[m HEAD@{11}: checkout: moving from main to 266ed26
+[33m96856ee[m HEAD@{12}: checkout: moving from 266ed266c83df5dea1aa5954fc36f5091d53dca8 to main
+[33m266ed26[m HEAD@{13}: checkout: moving from main to 266ed26
+[33m96856ee[m HEAD@{14}: commit: falta solucionar test
+[33ma08ed17[m HEAD@{15}: commit: codigo m9 insertado
+[33m65be330[m HEAD@{16}: commit: entornos finalizados semana3
+[33m266ed26[m HEAD@{17}: commit: semana 2 finalizada
+[33m2b43170[m HEAD@{18}: commit: M7 finalizado + README
+[33m6cebfc7[m HEAD@{19}: commit: M6 realizado y funcional
+[33m2fb4dce[m HEAD@{20}: commit: test válidos semana1
+[33mbd40d7f[m HEAD@{21}: commit: semana1
+[33m685d1b6[m HEAD@{22}: commit: Segundo commit
+[33m05c6a8d[m HEAD@{23}: Branch: renamed refs/heads/master to refs/heads/main
+[33m05c6a8d[m HEAD@{25}: commit (initial): Primer commit
