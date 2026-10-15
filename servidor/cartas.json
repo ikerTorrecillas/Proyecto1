@@ -1,9 +1,8 @@
 [
   {
-    "remitent": "prueba1",
-    "destinatari": "destinitari1",
-    "contingut": "cositas",
-    "personatge": "string",
+    "remitent": "Iker",
+    "destinatari": "Carta1",
+    "contingut": "Pruebesita jejejeje",
     "id": 1
   }
 ]

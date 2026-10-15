@@ -37,11 +37,12 @@ function inicializar() {
   if (btnAfegir) {
     // Añadimos una función de flecha que al hacer click nos añada una carta dinámica al array
     btnAfegir.addEventListener("click", async () => {
-      await fetch ('http://127.0.0.1:8000/cartas', {
+      await fetch('http://127.0.0.1:8000/cartas', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           remitent: "Carter Anònim",
+          destinatari: "alguien posiblemente",
           contingut: "Aquesta carta s'acaba de crear dinàmicament!"
         })
       });
@@ -55,7 +56,7 @@ function inicializar() {
   // comprobamos si existe
   if (form) {
     form.addEventListener("submit", (event) => {
-      event.preventDefault(); // detiene el envío y recarga de la página
+      event.preventDefault(); // detiene el envío
       validarCarta();         // ejecuta la validación y añade la carta
     });
   }
@@ -68,6 +69,44 @@ function inicializar() {
       if (event.target.classList.contains("btn-eliminar")) {
         const id = event.target.dataset.id; // Obtenemos el dataset.id del botón
         eliminarCarta(id); // llamamos a la función eliminar carta y le pasamos la constante
+      }
+    });
+  }
+
+  // Buscamos el botón y la tabla en el HTML usando sus IDs
+  const btnMostrarTaula = document.querySelector("#btnMostrarTaula");
+  const taulaCartes = document.querySelector("#taulaCartes");
+
+  // Nos aseguramos de que ambos elementos existan en la página antes de continuar para evitar errores en consola
+  if (btnMostrarTaula && taulaCartes) {
+
+    // Escuchamos el clic del usuario sobre el botón
+    btnMostrarTaula.addEventListener("click", () => {
+
+      // Si la tabla está escondida (display: none), la mostramos usando su estilo de tabla
+      if (taulaCartes.style.display === "none") {
+        taulaCartes.style.display = "table";
+        btnMostrarTaula.textContent = "Ocultar taula"; // Actualizamos el texto del botón para ofrecer la acción contraria
+      }
+      // Si la tabla ya se está viendo, la volvemos a ocultar
+      else {
+        taulaCartes.style.display = "none";
+        btnMostrarTaula.textContent = "Mostrar taula"; // Volvemos a cambiar el texto del botón
+      }
+
+    });
+  }
+
+  // Buscamos el cuerpo de la tabla para la delegación de eventos
+  const cosTaula = document.querySelector("#cosTaula");
+
+  // Si la tabla existe, le añadimos un escuchador de clics
+  if (cosTaula) {
+    cosTaula.addEventListener("click", (event) => {
+      // Comprobamos si el elemento clicado tiene la clase del botón de eliminar
+      if (event.target.classList.contains("btn-eliminar")) {
+        const id = event.target.dataset.id; // Obtenemos el ID guardado en data-id
+        eliminarCarta(id);                  // Llamamos a la función para borrarla del backend
       }
     });
   }
@@ -128,6 +167,32 @@ function renderitzarCartes(cartes) {
     // 4. Pengem la carta al taulell
     contenidor.appendChild(divCarta);
   });
+
+  const cosTaula = document.querySelector("#cosTaula");
+  // Comprobamos si el cuerpo de la tabla (<tbody>) existe en el DOM antes de hacer nada
+  if (cosTaula) {
+    // Limpiamos la tabla vaciando su contenido anterior para no duplicar filas
+    cosTaula.innerHTML = "";
+    // Recorremos la lista de cartas una por una
+    cartes.forEach(carta => {
+      // Creamos un nuevo elemento de fila de tabla (<tr>) en memoria
+      const tr = document.createElement("tr");
+
+      // Rellenamos la fila con la estructura HTML de cada celda usando plantilla de texto (template literals)
+      tr.innerHTML = `
+        <td>#${carta.id}</td>
+        <td>${carta.remitent}</td>
+        <td>${carta.destinatari}</td>
+        <td class="contingut-cell" title="${carta.contingut}">${carta.contingut}</td>
+        <td>
+          <button class="btn-eliminar" data-id="${carta.id}">Eliminar</button>
+        </td>
+      `;
+      // Enganchamos la fila recién creada dentro del cuerpo de la tabla
+      cosTaula.appendChild(tr);
+
+    });
+  };
 }
 
 async function validarCarta() {
@@ -145,8 +210,8 @@ async function validarCarta() {
     //enviamos la carta al servidor
     await fetch('http://127.0.0.1:8000/cartas', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({remitent, destinatari, contingut})
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ remitent, destinatari, contingut })
     });
 
     // Limpiar los campos del formulario tras añadir la carta
@@ -180,4 +245,4 @@ if (typeof document !== 'undefined') {
   });
 }
 
-export { renderitzarCartes };
+export { renderitzarCartes, carregarCartes };

@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import { renderitzarCartes } from '../js/scripts.js';
 
-test('renderitza les cartes correctament', () => {
+test('renderitza les cartes correctament amb destinatari', () => {
     const cartes = [
-        { id: 1, remitent: 'Maria', contingut: 'Hola!' },
-        { id: 2, remitent: 'Joan', contingut: 'Com estàs?' }
+        { id: 1, remitent: 'Maria', destinatari: 'Joan', contingut: 'Hola!' },
+        { id: 2, remitent: 'Joan', destinatari: 'Maria', contingut: 'Com estàs?' }
     ];
     document.body.innerHTML = `<div id="contenidorCartes"></div>`;
 
@@ -12,6 +12,12 @@ test('renderitza les cartes correctament', () => {
 
     const cartesElements = document.querySelectorAll('.carta');
     expect(cartesElements.length).toBe(2);
+
+    // Comprovem la primera carta
     expect(cartesElements[0].querySelector('h3').textContent).toBe('De: Maria');
-    expect(cartesElements[0].querySelector('p').textContent).toBe('Hola!');
+    
+    // Obtenim tots els paràgrafs <p> de la primera carta
+    const paragrafs = cartesElements[0].querySelectorAll('p');
+    expect(paragrafs[0].textContent).toBe('Per a: Joan');
+    expect(paragrafs[1].textContent).toBe('Hola!');
 });

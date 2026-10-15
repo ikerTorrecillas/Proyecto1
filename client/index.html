@@ -40,10 +40,28 @@
       <section id="formulariCarta">
         <!-- de moment buit: aquí anirà el formulari -->
       </section>
+
+      <section id="seccioRegistre" style="margin-top: 20px;">
+        <button id="btnMostrarTaula">Mostrar taula</button>
+        
+        <table id="taulaCartes" style="display: none; margin-top: 15px; width: 100%;">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Remitent</th>
+              <th>Destinatari</th>
+              <th>Contingut</th>
+              <th>Accions</th>
+            </tr>
+          </thead>
+          <tbody id="cosTaula">
+            <!-- Las filas se rellenarán con JavaScript -->
+          </tbody>
+        </table>
+      </section>
     </main>
     <button id="btnAfegir">Afegir carta de prova</button>
     <button id="btnSaluda">Saluda'm!</button>
-    <script type="module" src="js/scripts.js"></script>
   </div>
 
   <div class="footerSection">
@@ -51,6 +69,8 @@
       <p>&copy; 2026 El Cartero Invisible</p>
     </footer>
   </div>
+
+  <script type="module" src="js/scripts.js"></script>
 </body>
 
 </html>

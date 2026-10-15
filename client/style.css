@@ -158,6 +158,49 @@ button {
     z-index: 100;
 }
 
-.contenidorPrincipal {
-  /*position: relative;*/
+#buzon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* El buzón siempre por encima de todo */
+  background-color: var(--color-carta);
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- ESTILOS DE LA TABLA --- */
+#taulaCartes {
+  position: relative;
+  z-index: 1; /* La tabla queda por debajo del buzón */
+  border-collapse: collapse;
+  background-color: var(--color-carta);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#taulaCartes th, 
+#taulaCartes td {
+  border: 1px solid var(--color-borda);
+  padding: 10px;
+  text-align: left;
+}
+
+#taulaCartes th {
+  background-color: var(--color-principal);
+  color: var(--color-carta);
+}
+
+/* Filas alternas */
+#taulaCartes tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Truncado de texto para la columna Contingut */
+.contingut-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
 }
