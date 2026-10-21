@@ -93,7 +93,6 @@ function inicializar() {
         taulaCartes.style.display = "none";
         btnMostrarTaula.textContent = "Mostrar taula"; // Volvemos a cambiar el texto del botón
       }
-
     });
   }
 

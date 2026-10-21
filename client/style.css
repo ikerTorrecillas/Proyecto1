@@ -9,7 +9,7 @@ body {
 
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -203,4 +203,22 @@ button {
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 200px;
+}
+
+/* Un sobre al capdamunt de cada carta */
+.carta::before {
+    content: "✉️";
+    font-size: 2rem;
+    display: block;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* Un segell al buzón */
+#buzon::after {
+    content: "📮";
+    font-size: 3rem;
+    position: absolute;
+    top: -20px;
+    right: -10px;
 }

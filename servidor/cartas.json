@@ -1,8 +1,20 @@
 [
   {
-    "remitent": "Iker",
-    "destinatari": "Carta1",
-    "contingut": "Pruebesita jejejeje",
+    "remitent": "Carter Anònim",
+    "destinatari": "alguien posiblemente",
+    "contingut": "Aquesta carta s'acaba de crear dinàmicament!",
     "id": 1
+  },
+  {
+    "remitent": "Carter Anònim",
+    "destinatari": "alguien posiblemente",
+    "contingut": "Aquesta carta s'acaba de crear dinàmicament!",
+    "id": 2
+  },
+  {
+    "remitent": "Carter Anònim",
+    "destinatari": "alguien posiblemente",
+    "contingut": "Aquesta carta s'acaba de crear dinàmicament!",
+    "id": 3
   }
 ]
