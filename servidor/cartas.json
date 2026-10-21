@@ -3,12 +3,6 @@
     "remitent": "Carter Anònim",
     "destinatari": "alguien posiblemente",
     "contingut": "Aquesta carta s'acaba de crear dinàmicament!",
-    "id": 1
-  },
-  {
-    "remitent": "Carter Anònim",
-    "destinatari": "alguien posiblemente",
-    "contingut": "Aquesta carta s'acaba de crear dinàmicament!",
     "id": 2
   },
   {
@@ -16,5 +10,17 @@
     "destinatari": "alguien posiblemente",
     "contingut": "Aquesta carta s'acaba de crear dinàmicament!",
     "id": 3
+  },
+  {
+    "remitent": "Pau",
+    "destinatari": "Anna",
+    "contingut": "Hola Anna!",
+    "id": 4
+  },
+  {
+    "remitent": "Test",
+    "destinatari": "Test",
+    "contingut": "Test",
+    "id": 5
   }
 ]
