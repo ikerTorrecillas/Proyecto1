@@ -63,6 +63,23 @@ def crear_carta(carta: Carta):
     guardar_cartes(cartes)
     return nova_carta
 
+
+@app.put("/cartas/{id}", status_code=status.HTTP_200_OK)
+def actualitzar_carta(id: int, carta: Carta):
+    for i, c in enumerate(cartes):
+        if c["id"] == id:
+            # Actualitza totes les dades excepte l'ID
+            cartes[i] = {
+                "id": id,
+                "remitent": carta.remitent,
+                "destinatari": carta.destinatari,
+                "contingut": carta.contingut,
+            }
+            guardar_cartes(cartes)          # ⭐ persisteix al fitxer
+            return cartes[i]
+    raise HTTPException(status_code=404, detail="Carta no trobada")
+
+
 @app.delete("/cartas/{id}", status_code=status.HTTP_200_OK)
 def eliminar_carta(id: int):
     global cartes

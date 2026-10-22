@@ -1,26 +1,26 @@
 [
   {
-    "remitent": "Carter Anònim",
-    "destinatari": "alguien posiblemente",
-    "contingut": "Aquesta carta s'acaba de crear dinàmicament!",
-    "id": 2
+    "id": 1,
+    "remitent": "Si si si",
+    "destinatari": "sisisi",
+    "contingut": "pot ser"
   },
   {
-    "remitent": "Carter Anònim",
-    "destinatari": "alguien posiblemente",
-    "contingut": "Aquesta carta s'acaba de crear dinàmicament!",
-    "id": 3
+    "id": 2,
+    "remitent": "funciona",
+    "destinatari": "cambioos",
+    "contingut": "siuuu"
   },
   {
-    "remitent": "Pau",
-    "destinatari": "Anna",
-    "contingut": "Hola Anna!",
-    "id": 4
+    "id": 3,
+    "remitent": "Hola",
+    "destinatari": "Como estás?",
+    "contingut": "Yo muy bien"
   },
   {
-    "remitent": "Test",
-    "destinatari": "Test",
-    "contingut": "Test",
-    "id": 5
+    "id": 4,
+    "remitent": "Victor",
+    "destinatari": "Yo",
+    "contingut": "probando CSS"
   }
 ]

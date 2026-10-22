@@ -43,7 +43,7 @@
 
       <section id="seccioRegistre" style="margin-top: 20px;">
         <button id="btnMostrarTaula">Mostrar taula</button>
-        
+
         <table id="taulaCartes" style="display: none; margin-top: 15px; width: 100%;">
           <thead>
             <tr>
@@ -69,6 +69,30 @@
       <p>&copy; 2026 El Cartero Invisible</p>
     </footer>
   </div>
+
+  <!-- Modal emergente para editar -->
+<div id="modalEditar" class="modal" style="display: none;">
+  <div class="modal-contenido">
+    <span id="btnCerrarModal" class="cerrar">&times;</span>
+    <h2>Editar Carta</h2>
+
+    <form id="formEditarCarta">
+      <!-- IDs adaptados a tu JS -->
+      <input type="hidden" id="editId">
+      
+      <label for="editRemitent">Remitente:</label>
+      <input type="text" id="editRemitent" required>
+      
+      <label for="editDestinatari">Destinatario:</label>
+      <input type="text" id="editDestinatari" required>
+      
+      <label for="editContingut">Contenido:</label>
+      <textarea id="editContingut" required></textarea>
+      
+      <button type="submit">Guardar Cambios</button>
+    </form>
+  </div>
+</div>
 
   <script type="module" src="js/scripts.js"></script>
 </body>

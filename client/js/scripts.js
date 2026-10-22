@@ -57,7 +57,7 @@ function inicializar() {
   if (form) {
     form.addEventListener("submit", (event) => {
       event.preventDefault(); // detiene el envío
-      validarCarta();         // ejecuta la validación y añade la carta
+      crearCarta();         // ejecuta la validación y añade la carta
     });
   }
 
@@ -109,6 +109,73 @@ function inicializar() {
       }
     });
   }
+
+  // la ventana modal es una pestaña emergente
+  // Seleccionamos los elementos clave del modal desde el DOM
+  const modalEditar = document.querySelector("#modalEditar");
+  const formEditarCarta = document.querySelector("#formEditarCarta");
+  const btnCerrarModal = document.querySelector("#btnCerrarModal");
+
+  // 1. Escuchamos los clics en todo el documento para capturar el botón "Editar/Actualizar"
+  document.addEventListener("click", async (event) => {
+    // Verificamos si el elemento pulsado tiene la clase del botón de editar
+    if (event.target.classList.contains("btn-actualizar")) {
+      const id = event.target.dataset.id; // Leemos el ID guardado en el atributo data-id
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/cartas/${id}`)
+
+        if (!response.ok) {
+          throw new Error(`Error HTTP: ${response.status}`)
+        }
+
+        // Buscamos los datos actuales de la carta en nuestro array local
+        const cartaAEditar = await response.json();
+
+        // Rellenamos los inputs del modal con los datos actuales de la carta
+        document.querySelector("#editId").value = cartaAEditar.id;
+        document.querySelector("#editRemitent").value = cartaAEditar.remitent;
+        document.querySelector("#editDestinatari").value = cartaAEditar.destinatari;
+        document.querySelector("#editContingut").value = cartaAEditar.contingut;
+
+        // Hacemos visible el formulario emergente cambiando su display a flex
+        modalEditar.style.display = "flex";
+
+      } catch (error) {
+        console.error("Error al obtener la carta para editar:", error);
+        alert("No se ha podido cargar la información de la carta.");
+      }
+    }
+  });
+
+  // 2. Controlamos el envío del formulario del modal cuando el usuario guarda cambios
+  if (formEditarCarta) {
+    formEditarCarta.addEventListener("submit", async (event) => {
+      event.preventDefault(); // Evitamos que la página se recargue
+
+      // Recogemos el ID y las nuevas entradas introducidas por el usuario
+      const id = document.querySelector("#editId").value;
+      const datosActualizados = {
+        remitent: document.querySelector("#editRemitent").value,
+        destinatari: document.querySelector("#editDestinatari").value,
+        contingut: document.querySelector("#editContingut").value
+      };
+
+      // Ejecutamos la función asíncrona para enviar la petición PUT al servidor
+      await actualizarCarta(id, datosActualizados);
+
+      // Ocultamos de nuevo la ventana modal al finalizar la actualización
+      modalEditar.style.display = "none";
+      carregarCartes(); // Recargamos para ver los cambios actualizados
+    });
+  }
+
+  // 3. Evento para ocultar el modal al hacer clic sobre la 'X'
+
+  if (btnCerrarModal) {
+    btnCerrarModal.addEventListener("click", () => {
+      modalEditar.style.display = "none";
+    });
+  }
 }
 
 async function carregarCartes() {
@@ -156,12 +223,18 @@ function renderitzarCartes(cartes) {
     btnEliminar.className = "btn-eliminar";
     btnEliminar.dataset.id = carta.id;
 
+    const btnActualizar = document.createElement("button");
+    btnActualizar.textContent = "Actualizar";
+    btnActualizar.className = "btn-actualizar";
+    btnActualizar.dataset.id = carta.id;
+
     // 3. Muntem l'estructura
     divCarta.appendChild(titol);
     divCarta.appendChild(destinatariSpan);
     divCarta.appendChild(paragraf);
     divCarta.appendChild(idSpan);
     divCarta.appendChild(btnEliminar);
+    divCarta.appendChild(btnActualizar);
 
     // 4. Pengem la carta al taulell
     contenidor.appendChild(divCarta);
@@ -186,6 +259,9 @@ function renderitzarCartes(cartes) {
         <td>
           <button class="btn-eliminar" data-id="${carta.id}">Eliminar</button>
         </td>
+        <td>
+          <button class="btn-actualizar" data-id="${carta.id}">Actualizar</button>
+        </td>
       `;
       // Enganchamos la fila recién creada dentro del cuerpo de la tabla
       cosTaula.appendChild(tr);
@@ -194,7 +270,7 @@ function renderitzarCartes(cartes) {
   };
 }
 
-async function validarCarta() {
+async function crearCarta() {
   // Buscamos los cuadros de texto del HTML por su ID
   const remitentInput = document.querySelector("#remitent");
   const destinatariInput = document.querySelector("#destinatari");
@@ -228,11 +304,22 @@ async function validarCarta() {
   }
 }
 
+async function actualizarCarta(id, datosActualizados) {
+  const response = await fetch(`http://127.0.0.1:8000/cartas/${id}`, {
+    method: 'PUT',                                        // 1. el mètode
+    headers: { 'Content-Type': 'application/json' },      // 2. les capçaleres
+    body: JSON.stringify(datosActualizados)                           // 3. el cos (serialitzat!)
+  });
+  if (!response.ok) {
+    throw new Error(`Error HTTP: ${response.status}`);
+  }
+  return await response.json();
+}
+
 async function eliminarCarta(id) {
   await fetch(`http://127.0.0.1:8000/cartas/${id}`, {
     method: 'DELETE'
   });
-
   carregarCartes();
 }
 
@@ -244,4 +331,4 @@ if (typeof document !== 'undefined') {
   });
 }
 
-export { renderitzarCartes, carregarCartes };
+export { renderitzarCartes, carregarCartes, actualizarCarta };
