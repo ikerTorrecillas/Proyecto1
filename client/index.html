@@ -19,7 +19,6 @@
       <input type="text" id="remitent" placeholder="Tu Nombre" required>
       <input type="text" id="destinatari" placeholder="A quien va dirigida" required>
       <textarea id="contingut" placeholder="Escribe tu carta" required></textarea>
-      <input type="text" id="personatge" placeholder="Personaje (ex: Spiterman)">
       <button id="btnForm" type="submit">Enviar carta</button>
     </form>
 
@@ -51,7 +50,8 @@
               <th>Remitent</th>
               <th>Destinatari</th>
               <th>Contingut</th>
-              <th>Accions</th>
+              <th>Eliminar</th>
+              <th>Actualizar</th>
             </tr>
           </thead>
           <tbody id="cosTaula">
@@ -60,8 +60,10 @@
         </table>
       </section>
     </main>
-    <button id="btnAfegir">Afegir carta de prova</button>
-    <button id="btnSaluda">Saluda'm!</button>
+    <div class="botons-accions">
+      <button id="btnAfegir">Afegir carta de prova</button>
+      <button id="btnSaluda">Saluda'm</button>
+    </div>
   </div>
 
   <div class="footerSection">
@@ -71,28 +73,28 @@
   </div>
 
   <!-- Modal emergente para editar -->
-<div id="modalEditar" class="modal" style="display: none;">
-  <div class="modal-contenido">
-    <span id="btnCerrarModal" class="cerrar">&times;</span>
-    <h2>Editar Carta</h2>
+  <div id="modalEditar" class="modal" style="display: none;">
+    <div class="modal-contenido">
+      <span id="btnCerrarModal" class="cerrar">&times;</span>
+      <h2>Editar Carta</h2>
 
-    <form id="formEditarCarta">
-      <!-- IDs adaptados a tu JS -->
-      <input type="hidden" id="editId">
-      
-      <label for="editRemitent">Remitente:</label>
-      <input type="text" id="editRemitent" required>
-      
-      <label for="editDestinatari">Destinatario:</label>
-      <input type="text" id="editDestinatari" required>
-      
-      <label for="editContingut">Contenido:</label>
-      <textarea id="editContingut" required></textarea>
-      
-      <button type="submit">Guardar Cambios</button>
-    </form>
+      <form id="formEditarCarta">
+        <!-- IDs adaptados a tu JS -->
+        <input type="hidden" id="editId">
+
+        <label for="editRemitent">Remitente:</label>
+        <input type="text" id="editRemitent" required>
+
+        <label for="editDestinatari">Destinatario:</label>
+        <input type="text" id="editDestinatari" required>
+
+        <label for="editContingut">Contenido:</label>
+        <textarea id="editContingut" required></textarea>
+
+        <button type="submit">Guardar Cambios</button>
+      </form>
+    </div>
   </div>
-</div>
 
   <script type="module" src="js/scripts.js"></script>
 </body>

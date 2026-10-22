@@ -331,4 +331,4 @@ if (typeof document !== 'undefined') {
   });
 }
 
-export { renderitzarCartes, carregarCartes, actualizarCarta };
+export { renderitzarCartes, carregarCartes, actualizarCarta, eliminarCarta };

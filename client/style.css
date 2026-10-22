@@ -1,12 +1,17 @@
+/* --- CONFIGURACIÓN BASE (MOBILE-FIRST) --- */
+
+/* Reset de modelo de caja */
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   margin: 0;
+  padding: 0;
 }
 
+/* Fondo dinámico con pseudo-elemento */
 body::before {
   content: "";
   position: fixed;
@@ -20,76 +25,67 @@ body::before {
   background-position: center;
   background-size: cover;
 
-  opacity: 0.3; 
-  
+  opacity: 0.3;
   z-index: -1;
 }
 
+/* Encabezado principal */
 #titolPrincipal {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  text-align: center;
 }
 
 h1 {
   color: #2c3e50;
-  font-size: 2.5rem;
+  font-size: 1.8rem; /* Tamaño adaptado para móviles */
+  transition: color 0.3s;
 }
 
+h1:hover {
+  color: #e74c3c; /* Cambia de color al pasar el ratón */
+}
+
+/* Secciones generales */
 section {
-  margin: 20px 0;
-  padding: 16px;
+  margin: 15px auto;
+  padding: 12px;
+  width: 100%;
+  max-width: 1200px;
 }
 
-h1:hover { color: #e74c3c; }              /* canvia de color en passar-hi el ratolí */
-/* section:first-child { border-left: 4px solid #2c3e50; } */
-
-.carta {
-  background: linear-gradient(135deg, #b4bbc7 0%, #cbd5e1 50%, #ffffff 100%);
-  border: 1px solid #ccc;
-  padding: 2rem;
-  margin: 1em;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 60%;
-}
-
-#contenidorCartes {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    /*
-    position: absolute;
-    float: left;
-    width: 45%;
-    margin: 2.5%;
-    */
-}
-
+/* Botones generales */
 button {
   background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-  font-size: 1rem;
-  padding: 12px 28px;
+  color: white;
+  font-size: 0.95rem;
+  padding: 12px 20px;
+  border: none;
   border-radius: 12px;
-  margin: 10px;
+  margin: 8px 0;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.3s;
 }
 
-#btnSaluda {
-  margin-left: 44%;
+button:active {
+  transform: scale(0.97);
 }
 
-#btnSaluda:hover {
-  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
-}
-
+/* Alineación de botones específicos en móvil */
+#btnSaluda,
 #btnAfegir {
-  margin-left: 41.2%;
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 300px;
 }
 
-#btnAfegir:hover {
+#btnSaluda:hover,
+#btnAfegir:hover,
+#btnForm:hover,
+.btn-actualizar:hover {
   background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
 }
 
@@ -101,21 +97,15 @@ button {
   background: linear-gradient(135deg, #410903 0%, #551313 100%);
 }
 
-.btn-actualizar:hover {
-  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
-}
-
-#btnForm:hover {
-  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
-}
-
+/* Formulario principal (Mobile-First: ocupa el 100% del ancho móvil) */
 #formCarta {
   display: flex;
-  flex-direction: column; 
-  align-items: center;    
-  max-width: 400px;       
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 450px;
   margin: 20px auto;
-  width: 100%;
+  padding: 15px;
 }
 
 #formCarta input,
@@ -123,134 +113,142 @@ button {
 #formCarta button {
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.footerSection {
-  display: flex;
-  background: linear-gradient(135deg, #e0f2fe 0%, #a9bcc4 100%);
-  justify-content: center;
-  align-items: center;
-  margin: 5px 10% 0px 10%;
-  padding: 1.25rem 2rem;
-  border-radius: 12px;
-  flex-wrap: wrap;
-  gap: 1rem;
+/* --- CONTENEDOR DE CARTAS (GRID RESPONSIVE) --- */
+
+/* MÓVIL (Por defecto < 768px): 1 Columna ocupando el 100% */
+#contenidorCartes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 10px;
+  width: 100%;
+  justify-items: center;
 }
 
-.footerSection p {
-  font-size: 0.95rem;
-  font-weight: 500;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+/* Estilo individual de cada Carta */
+.carta {
+  background: linear-gradient(135deg, #b4bbc7 0%, #cbd5e1 50%, #ffffff 100%);
+  border: 1px solid #ccc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ocupa todo el ancho de su celda del grid */
 }
 
+/* Decoración con sobre en cada carta */
+.carta::before {
+  content: "✉️";
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* Estilo de la información adicional */
 .info {
   text-align: center;
   max-width: 100%;
   margin: 0 auto;
 }
 
-#buzon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #a9bcc4;
-    color: white;
-    padding: 16px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 100;
-}
-
-#buzon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000; /* El buzón siempre por encima de todo */
-  background-color: var(--color-carta);
-  padding: 10px;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* --- ESTILOS DE LA TABLA --- */
+/* --- TABLA DE CARTAS (RESPONSIVE) --- */
 #taulaCartes {
   position: relative;
-  z-index: 1; /* La tabla queda por debajo del buzón */
+  z-index: 1;
   border-collapse: collapse;
-  background-color: var(--color-carta);
+  background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  overflow: hidden;
+  overflow-x: auto;
+  width: 100%;
 }
 
-#taulaCartes th, 
+#taulaCartes th,
 #taulaCartes td {
-  border: 1px solid var(--color-borda);
-  padding: 10px;
+  border: 1px solid #cbd5e1;
+  padding: 8px;
   text-align: left;
 }
 
 #taulaCartes th {
-  background-color: var(--color-principal);
-  color: var(--color-carta);
+  background-color: #2c3e50;
+  color: white;
 }
 
-/* Filas alternas */
 #taulaCartes tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Truncado de texto para la columna Contingut */
 .contingut-cell {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 200px;
+  max-width: 150px;
 }
 
-/* Un sobre al capdamunt de cada carta */
-.carta::before {
-    content: "✉️";
-    font-size: 2rem;
-    display: block;
-    text-align: center;
-    margin-bottom: 8px;
+/* --- BUZÓN DE CORREO (RESPONSIVE EN MÓVIL) --- */
+#buzon {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 1000;
+  background-color: #a9bcc4;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Un segell al buzón */
 #buzon::after {
-    content: "📮";
-    font-size: 3rem;
-    position: absolute;
-    top: -20px;
-    right: -10px;
+  content: "📮";
+  font-size: 2rem; /* Más compacto en móvil */
+  position: absolute;
+  top: -15px;
+  right: -5px;
 }
 
-/* este código servirá para hacer emergente mi form*/
+/* --- PIE DE PÁGINA (FOOTER) --- */
+.footerSection {
+  display: flex;
+  background: linear-gradient(135deg, #e0f2fe 0%, #a9bcc4 100%);
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 0 auto;
+  padding: 1rem;
+  border-radius: 12px;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 90%;
+}
+
+.footerSection p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
 /* --- ESTILOS DEL MODAL (VENTANA EMERGENTE) --- */
-
-/* Capa oscura de fondo que cubre toda la pantalla */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Oscurece el fondo con transparencia */
-  backdrop-filter: blur(4px); /* Efecto de desenfoque muy elegante */
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000; /* Asegura que quede por encima del buzón y la tabla */
-  animation: fadeIn 0.25s ease-out; /* Animación suave al aparecer */
+  z-index: 2000;
+  animation: fadeIn 0.25s ease-out;
 }
 
-/* Caja del formulario */
 .modal-contenido {
   background-color: #ffffff;
-  padding: 30px;
+  padding: 25px;
   border-radius: 12px;
   width: 90%;
   max-width: 450px;
@@ -259,24 +257,21 @@ button {
   font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* Título del modal */
 .modal-contenido h2 {
   margin-top: 0;
   margin-bottom: 20px;
   color: #2c3e50;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 10px;
 }
 
-/* Estructura del formulario en columna */
 #formEditarCarta {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* Etiquetas de los campos */
 #formEditarCarta label {
   font-weight: 600;
   font-size: 0.9rem;
@@ -284,7 +279,6 @@ button {
   margin-bottom: -4px;
 }
 
-/* Campos de entrada (inputs y textarea) */
 #formEditarCarta input[type="text"],
 #formEditarCarta textarea {
   width: 100%;
@@ -296,7 +290,6 @@ button {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Efecto al hacer clic en un campo (focus) */
 #formEditarCarta input[type="text"]:focus,
 #formEditarCarta textarea:focus {
   outline: none;
@@ -304,16 +297,15 @@ button {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
-/* Tamaño fijo para el área de texto */
 #formEditarCarta textarea {
   resize: vertical;
   min-height: 90px;
 }
 
-/* Botón de guardar cambios */
+/* Botón de guardar cambios en el modal con degradado hover invertido */
 #formEditarCarta button[type="submit"] {
   margin-top: 10px;
-  background-color: #27ae60;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
   color: white;
   border: none;
   padding: 12px;
@@ -321,32 +313,21 @@ button {
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s transform 0.1s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(39, 174, 96, 0.2);
 }
 
-/* 🟢 Efecto Hover: Invierte la dirección del degradado */
 #formEditarCarta button[type="submit"]:hover {
-  /* Invertimos los colores del degradado */
   background: linear-gradient(135deg, #27ae60, #2ecc71);
   box-shadow: 0 6px 12px rgba(39, 174, 96, 0.35);
-  transform: translateY(-1px); /* Un pequeño 'levitamiento' muy sutil */
+  transform: translateY(-1px);
 }
 
-/* Efecto al hacer clic */
 #formEditarCarta button[type="submit"]:active {
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(39, 174, 96, 0.2);
 }
 
-#formEditarCarta button[type="submit"]:hover {
-  background-color: #219150;
-}
-
-#formEditarCarta button[type="submit"]:active {
-  transform: scale(0.98);
-}
-
-/* Botón de cerrar ('X') en la esquina */
 .cerrar {
   position: absolute;
   top: 15px;
@@ -362,7 +343,6 @@ button {
   color: #e74c3c;
 }
 
-/* Animación de entrada */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -372,4 +352,102 @@ button {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (Puntos de ruptura / Breakpoints para adaptar pantallas)
+   ========================================================================== */
+
+/* 📱 1. TABLET (De 769px a 1024px): 2 Columnas de cartas */
+@media (min-width: 769px) and (max-width: 1024px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  #contenidorCartes {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+    gap: 20px;
+  }
+
+  #btnSaluda,
+  #btnAfegir {
+    width: auto;
+    display: inline-block;
+  }
+
+  #buzon::after {
+    font-size: 2.5rem;
+  }
+}
+
+/* 💻 2. ESCRITORIO (A partir de 1025px): 3 Columnas de cartas */
+@media (min-width: 1025px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  #contenidorCartes {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+    gap: 24px;
+    padding: 20px;
+  }
+
+  #btnSaluda,
+  #btnAfegir {
+    width: auto;
+    display: inline-block;
+  }
+
+  #buzon {
+    bottom: 25px;
+    right: 25px;
+    padding: 12px;
+  }
+
+  #buzon::after {
+    font-size: 3rem;
+  }
+
+  .contingut-cell {
+    max-width: 250px;
+  }
+}
+
+/* Espaciado general y alineación para botones dentro de las cartas */
+.carta button {
+  margin: 6px 4px !important; /* Añade margen horizontal para separar los botones */
+}
+
+/* Opcional: Para evitar que el ID (#1, #2) quede tapado */
+.carta span {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Contenedor para centrar los 3 botones en fila */
+.botons-accions {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center;     /* Los alinea verticalmente */
+  flex-wrap: wrap;         /* Permite que se adapten bien en móviles */
+  gap: 15px;               /* Añade un espacio uniforme entre ellos */
+  margin: 30px auto;       /* Margen arriba/abajo y centrado en la página */
+  width: 100%;
+}
+
+/* Quitamos los márgenes fijos que desalineaban los botones */
+#btnSaluda,
+#btnAfegir,
+#btnMostrarTaula {
+  margin: 0 !important;   /* Elimina cualquier margin-left antiguo */
+  width: auto;            /* Deja que el botón tome el tamaño de su texto */
+  display: inline-block;
+}
+
+#btnMostrarTaula {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 10px auto;
+  width: 20%;
 }

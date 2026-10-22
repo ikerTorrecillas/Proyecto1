@@ -22,5 +22,17 @@
     "remitent": "Victor",
     "destinatari": "Yo",
     "contingut": "probando CSS"
+  },
+  {
+    "id": 5,
+    "remitent": "La carta 5",
+    "destinatari": "i like it",
+    "contingut": "Cositas"
+  },
+  {
+    "remitent": "Carter Anònim",
+    "destinatari": "alguien posiblemente",
+    "contingut": "Aquesta carta s'acaba de crear dinàmicament!",
+    "id": 6
   }
 ]
